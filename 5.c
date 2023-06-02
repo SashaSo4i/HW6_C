@@ -1,22 +1,27 @@
 #include <stdio.h>
-//вычисляем сначала цифры на каждой из позиций в числе, после перемнодаем их а в ответе умножаем перое получившееся число на 100 чтобы было без разделения между 1 и вторым числом
+//вычисляем сначала цифры на каждой из позиций в числе
 int ispolnitel(int num) {
-    int pos1 = num / 100; 
-    int pos2 = (num / 10) % 10; 
-    int pos3 = num % 10; 
-    int ans1 = pos1 * pos2; 
-    int ans2 = pos2 * pos3; 
-    int answer = ans1 * 100 + ans2; 
-    return answer;
+    int pos1, pos2, pos3, ans2, ans1;
+    pos1 = num / 100; 
+    pos2 = (num / 10) % 10; 
+    pos3 = num % 10;
+    ans1 = pos1 * pos2; 
+    ans2 = pos2 * pos3;
+    if (ans1 <= ans2) {
+        printf("%d%d", ans2, ans1);
+    }
+    else {
+        printf("%d%d", ans1, ans2);
+    }
+    return 0;
 }
 
 int main() {
-    int num, answer;
+    int num, ans;
     scanf("%d", &num);
     if (num > 999 && num < 100) { //проверка на диапозон (просто так)
         return 0;
     }
-    answer = ispolnitel(num);
-    printf("%d", answer);
+    ispolnitel(num);
     return 0;
 }
